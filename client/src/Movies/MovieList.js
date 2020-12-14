@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 export default function MovieList(props) {
@@ -15,10 +15,8 @@ function MovieDetails(props) {
   const { id, title, director, metascore } = props.movie;
   const history = useHistory();
 
-  const clicky = () => history.push(`/movies/${id}`);
-
   return (
-    <div className='movie-card' onClick={clicky}>
+    <div className='movie-card' onClick={() => history.push(`/movies/${id}`)}>
       <h2>{title}</h2>
       <div className='movie-director'>
         Director: <em>{director}</em>

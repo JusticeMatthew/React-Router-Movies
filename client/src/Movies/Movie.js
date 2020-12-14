@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useRouteMatch } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export default function Movie(props) {
   const [movie, setMovie] = useState();
 
-  const { url } = useRouteMatch();
-  let { id } = useParams();
+  const { id } = useParams();
   // Change ^^^ that line and use a hook to obtain the :id parameter from the URL
-  console.log(movie);
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`) // Study this endpoint with Postman
@@ -31,7 +29,7 @@ export default function Movie(props) {
     return <div>Loading movie information...</div>;
   }
 
-  const { title, director, metascore, stars } = props.movie;
+  const { title, director, metascore, stars } = movie;
 
   return (
     <div className='save-wrapper'>
